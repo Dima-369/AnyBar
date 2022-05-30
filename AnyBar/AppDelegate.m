@@ -34,9 +34,7 @@
         _statusItem.toolTip = _appTitle == nil ? [NSString stringWithFormat:@"AnyBar @ %d", _udpPort] : _appTitle;
     }
     @catch(NSException *ex) {
-        NSLog(@"Error: %@: %@", ex.name, ex.reason);
-        _statusItem.image = [NSImage imageNamed:@"exclamation@2x.png"];
-        [_statusItem.image setTemplate:NO];
+      [[NSApplication sharedApplication] terminate:nil];
     }
     @finally {
         NSString *portTitle = [NSString stringWithFormat:@"UDP port: %@", _udpPort >= 0 ? [NSNumber numberWithInt:_udpPort] : @"unavailable"];
